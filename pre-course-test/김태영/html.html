@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style>
+	* {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		position: relative;
+	}
+	.button {
+		display: block;
+		background-color: #fff;
+		padding: 20px;
+		border: none;
+		text-align: center;
+		text-decoration: none;
+		font-size: 15pt;
+	}
+	.left-div {
+		width: 20%; 
+		display: inline-block;
+		background-color: #F9EADA;
+		height: 100%;
+		border: 1px solid #000;
+		border-right: 0px;
+	}
+	.right-div {
+		width:50%;
+		display:inline-block;
+		background-color: #FAE5E5;
+		height: 100%; padding: 20px;
+		border: 1px solid #000;
+	}
+	.tab {
+		width: 100%;
+		display: block;
+		border-bottom: 1px solid #000;
+		height: 50px;
+		padding: 10px;
+	}
+	.tab-text {
+		line-height: 30px;
+		color: #000;
+	}
+	.tab-text:hover {
+		color: #ff0000;
+		font-weight: bold;
+	}
+	.footer {
+		position: absolute;
+		bottom: 0px;
+		width: 100%;
+		padding: 10px;
+	}
+	</style>
+</head>
+<body>
+	<div style="width: 100%; display: flex; height: 600px;">
+	<!-- left div -->
+		<div class="left-div">
+			<div class="tab">
+				<span class="tab-text">news</span>
+			</div>
+			<div class="tab">
+				<span class="tab-text">posts</span>
+			</div>
+			<div class="tab">
+				<span class="tab-text">profile</span>
+			</div>
+			<div class="footer">
+				<span>2019 eBay Korea</span>
+			</div>
+		</div>
+		<!-- right div -->
+		<div class="right-div">
+			<span style="display: block; font-size: 20pt; margin-bottom: 20px; ">Hello eBay</span>
+			<button class="button">Read more...</button>
+		</div>
+	</div>
+</body>
+</html>
