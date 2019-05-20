@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    (html:5)
+    <div id="app">
+
+    </div>
+
+    <script>
+        // vue.js  reactvity 구현
+        var viewModel = {};
+        var div = document.querySelector('#app');
+        var str = '10';
+        (function(){
+            function init() {
+                Object.defineProperty(viewModel, 'str', {
+                    get: function() {
+                        // Note : viewModel.get
+                        console.log('get');
+                        // viweModel.get
+                    },
+                    set: function(newValue) {
+                        // Note : viewModel.set
+                        console.log('set method', newValue);
+                        // viewModel.str = 'abc';
+                        div.innerHTML = newValue;
+                    }
+                });
+            }
+
+            init();
+
+            function render(newValue) {
+                div.innerHTML = newValue
+            }
+        })();
+
+        // 이상의 재 정의 코드가 전부라 카더라... (Vue.js)
+
+        
+    </script>
+
+</body>
+</html>

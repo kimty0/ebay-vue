@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <!--
+        <p>{{message}}</p>
+        -->
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'hello',
+            },
+            // template으로 하면 하드코딩 했을떼와 달리 화면에 노출되는게 있고 없고의 차이
+            // 인터넷이 느린 환경에서 하드코딩 되어있으면 js 로딩 전 까지 parsing 되지 않은 날 것이 노출됨
+            template: '<p>{{message}}</p>',
+        });
+    </script>
+  
+</body>
+</html>

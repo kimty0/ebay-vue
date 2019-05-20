@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      .normal {
+          color: green;
+      }
+      .warning {
+          color: red;
+      }
+  </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- 데이터 바인딩 시에는 JavaScript 기본 메소드 처리도 가능 -->
+        <!-- 근데 아래처럼 쓰는건 지양 하는게 좋고.. Computed 로 처리 하는 방법이 있다. -->
+        <p>{{msg.split('').reverse().join('')}}</p>
+        <p>{{reversedMsg}}</p>
+        <!-- v-if 는 DOM 자체를 노출/미노출 -->
+        <!-- v-show 는 CSS Style로 노출/미노출 -->
+        <button v-if="!login" v-on:click="loginMethod">login</button>
+        <button v-on:click="loginMethod">login</button>
+
+        <ul>
+            <!-- 이렇게 처리 하는 것이 Template의 Dirctive Binding -->
+            <li v-for="item in items">{{item}}</li>
+        </ul>
+        <p class="normal">color text</p>
+        <p v-bind:class="normalClass">color text</p>
+        <p v-bind:class="textClass">color text</p>
+        <button v-on:click="changeColorMethod">changeColor</button>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                normalClass: 'normal',
+                aClass: 'normal',
+                bClass: 'warning',
+                msg: 'hello',
+                login: false,
+                items: [1,2,3],
+            },
+            methods: {
+                loginMethod: function() {
+                    this.login = !this.login;
+                },
+                changeColorMethod: function() {
+                    if(this.normalClass == 'normal') {
+                        this.normalClass = 'warning';
+                    }
+                    else {
+                        this.normalClass = 'normal';
+                    }
+                }
+            },
+            computed: {
+                reversedMsg: function() {
+                    return this.msg.split('').reverse().join('');
+                },
+                textClass: function() {
+                    return this.login ? this.aClass : this.bClass
+                }
+            }
+
+        });
+    </script>
+  
+</body>
+</html>
+

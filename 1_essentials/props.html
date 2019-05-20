@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Layered Component 사용 시 $emit 해도 상위로만 튐 (최상위로 튀거나 하지 않음) -->
+    <!-- 그냥 상태 관리 라이브러리를 사용하새오 :D  -->
+    <div id="app">
+        <!-- <app-header v-bind:하위 컴포넌트 Data명="상위 컴포넌트 Data 명"> -->
+        {{num}}
+        <!-- <app header v-on:하위 컴포넌트 이벤트 명="상위 컴포넌트 리스너 명"-->
+        <app-header v-bind:propsdata="num" v-on:add="addNum">
+
+        </app-header>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+
+        var appHeader = {
+            template: `
+                <p>
+                    header<br/>
+                    <button v-on:click="sendEvent">
+                        click
+                    </button>
+                </p>
+                `,
+            props: ['propsdata'],   // camel case 쓰면 난리난다.
+            methods: {
+                sendEvent: function() {
+                    this.$emit('add');
+                }
+            }
+        };
+
+        new Vue({
+            el: '#app',
+            components: {
+                'app-header' : appHeader,
+            },
+            data: {
+                num: 10
+            },
+            methods: {
+                addNum: function() {
+                    console.log(this.num);
+                    this.num += 10;
+                }
+            }
+        });
+
+    </script>
+
+</body>
+</html>

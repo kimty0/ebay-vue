@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <app-header>
+
+        </app-header>
+        <app-contents>
+
+        </app-contents>
+    
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <script>
+
+        var appHeader = {
+            template: '<p>header</p>',
+            data: function() {
+                return {
+                    hnum: 10
+                }
+            }
+        };
+        var appContents = {
+            template: '<p>content</p>',
+            data: function() {
+                return {
+                    // 값을 직접 참조.
+                    // 는 참조가 안ㅋ돼ㅋ
+                    cnum: appHeader.hnum
+                }
+            }
+        };
+
+        new Vue({
+            el: '#app',
+            components: {
+                'app-header' : appHeader,
+                'app-contents' : appContents,
+
+            }
+        });
+    </script>
+
+</body>
+</html>

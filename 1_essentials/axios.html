@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+    <!-- Axios 는 Vue 에서 자주 사용되는 HTTP Connection Lib -->>
+
+    <div id="app">
+        <button v-on:click="fetchUsers">Get Users</button>
+        <div>
+            {{Users}}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                Users: []
+            },
+            methods: {
+                fetchUsers: function() {
+                    // 비동기 처리 할때 function 안에서 요청 생성 해줘야 함.
+                    var self = this;
+                    console.log('밖에서 호출 시 : ' + this);
+                    
+                    // Promise Base 니까 then 써서 처리해주면 됨.
+                    axios.get("https://jsonplaceholder.typicode.com/users")
+                        .then(function(response) {
+                            // Data 호출 성공 시
+                            console.log('안에서 호출 시 : ' + this);
+                            self.Users = response.data;
+                        })
+                        .catch(function(error) {
+                            // Data 호출 실패 시
+                            console.log(error);
+                        })
+                },
+            }
+        });
+    </script>
+  
+</body>
+</html>

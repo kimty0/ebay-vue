@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <div>
+            <!-- 해당 태그는 Anchor 태그로 뿌려짐. (A 태그 대신에 사용.) -->
+            <!-- to 에 매핑되는 Url 작성 -->
+            <router-link to="/login">login page</router-link>
+            <router-link to="/main">main page</router-link>
+        </div>
+        <!-- 특정 URL로 들어갔을때 컴포넌트가 뿌려지는 영역. -> SPA 에서 사용하는 영역 처리. (화면 단에서만 처리 가능) -->
+        <router-view></router-view>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Vue Router 사용을 위한 Java Script 추가 -->
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
+    <script>
+
+        var loginComponent = {
+            template: '<p>login</p>'
+        };
+        
+        var mainComponent = {
+            template: '<p>main</p>'
+        };
+
+        var router = new VueRouter({
+            // 페이지의 정보를 관리하는 속성
+            routes: [
+                {
+                    // Page URL
+                    path: '/login',
+                    
+                    // 이름을 넣어줄 수 있음. -> 기본값이 있긴 한데 Biz에 따라 넣어줘야할 수 있으니까 ㅇㅇ.
+                    name: 'login',
+
+                    // Page Component 
+                    // Object 형식으로 쳐도 되긴  하는데.... 코드 지저분해지니까 미리 빼놓자.
+                    component: loginComponent
+                },
+                {
+                    path: '/main',
+                    component: mainComponent
+                }
+            ]
+        });
+
+        new Vue({
+            el: '#app',
+            // 이름과 프로퍼티가 같으면 'router,' 로 간단하게 작성 가능
+            router: router
+        });
+    </script>
+  
+</body>
+</html>
